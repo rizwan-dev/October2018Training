@@ -65,6 +65,27 @@ public class DBHelper extends SQLiteOpenHelper {
         return employeeList;
     }
 
+    public void updateEmployee(Employee employee){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NAME, employee.getName());
+        contentValues.put(ADDRESS, employee.getAddress());
+        contentValues.put(SALARY, employee.getSalary());
+        contentValues.put(DESIGNATION, employee.getDestination());
+
+        sqLiteDatabase.update(EMPLOYEE_TABLE,contentValues, ID + " = " + employee, null);
+
+
+    }
+
+    public boolean deleteEmployee(int id) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        long rows = sqLiteDatabase.delete(EMPLOYEE_TABLE, ID + " = " + id, null);
+
+        return rows > 0;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 

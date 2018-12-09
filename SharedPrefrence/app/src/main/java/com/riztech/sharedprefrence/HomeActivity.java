@@ -22,4 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ShowEmployeesActivity.class);
         startActivity(intent);
     }
+
+    public void Update(View view) {
+    }
 }
